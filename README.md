@@ -1,4 +1,3 @@
-
 ## hex mod old ver
 just hex mod XD
 
@@ -59,9 +58,9 @@ thats all
 ## credits
 **original mod**
 
-- [kadedev]
-- [yingyang]
-- [djcat]
+- kadedev
+- yingyang
+- djcat
 
 **this port**
-- [marfxp] (...............)
+- marfxp (...............)
