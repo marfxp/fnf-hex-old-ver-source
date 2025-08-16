@@ -1,0 +1,10 @@
+:hex/10:Another great round! Vibing levels are off the charts!
+:bf:Yea, too bad the sun is gone now, and it's getting late.
+:bf:Should we get going?
+:gf/11:Probably, maybe i should call my parents that i'll be home soon.
+:bf:Aren't you an adult already?
+:gf:You should know more than anyone my parents worry too much.
+:hex/12:Sorry to bust in but are you up for another one?
+:bf:Hmm, i dunno, like i said it will be night soon so...
+:hex:Pretty please? I will be a very happy bot if you say yes!
+:bf:Mmmmmmmm, fine. Just this once.

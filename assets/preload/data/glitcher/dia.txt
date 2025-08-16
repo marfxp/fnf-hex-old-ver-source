@@ -1,0 +1,37 @@
+:bf/13:Huff.. puff... wow we spent a whole day on this.
+:bf:Aren't you tired?
+:hex:Nope! Not yet at least.
+:hex:My battery is solar-based so i'm saving energy at nights!
+:bf:Pff, lucky you then.
+:gf/14:I'm tired though... I think we should go now.
+:bf/15:I agree.
+:bf:Well, see ya around Hex!
+:hex/16:Yes, it was very fun! Good night-
+:PLAYSOUND:bzzt
+:BGTRACK:he
+:hex/17:  BZZZZZZZZZZT-
+:BGTRACK:hectic
+:PLAYSOUND:bz
+:bf/18:H-Huh? Hex?
+:hex:...Uh oh.
+:hex:I think we might have a problem...
+:bf:What problem?
+:hex/19:I probably used too much processing power and let my guard down...
+:hex:Something might have passed by my defenses, which means...
+:hex/20:There might be a virus inside me.
+:gf:Huh? Wait, isn't that like, dangerous to machines?
+:hex:VERY dangerous.... oh no.
+:hex/21:I think it wants to take control over the system.
+:bf:Shoot... can't you do something to prevent that?
+:hex:I... don't think i can... but.
+:hex:Wait. Maybe you can.
+:bf/22:Huh?
+:hex:Grab my mic and fight that thing off!
+:hex:If you order the system to input enough mic patterns it might crash.
+:hex:Then i'll enter sleep mode and run a safety scan which will kill that thing.
+:hex/23:Please! You're my only hope right now!
+:bf:...
+:bf/24:...Alright Hex, i'll try. I'm not leaving you behind.
+:bf:Are you ready?
+:hex/25:...
+:hex/26:...I'm always ready.
