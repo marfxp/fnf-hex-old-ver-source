@@ -13,8 +13,7 @@ be bo bap
 ## if u want compile, read this parts
 
 ## libraries versions!!!!!!!!!!
-'''
-lime: 7.8.0
+'''lime: 7.8.0
 openfl: 9.0.2
 flixel: 4.8.1
 
@@ -40,8 +39,7 @@ newgrounds: 1.1.4
 openfl-ffmpeg: 0.0.1
 openfl-webm: 0.0.4
 tjson: 1.4.0
-yagp: 1.1.4
-'''
+yagp: 1.1.4'''
 
 ## to compile
 
