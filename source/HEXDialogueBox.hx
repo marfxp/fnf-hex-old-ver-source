@@ -6,12 +6,9 @@ import flixel.FlxSprite;
 import flixel.addons.text.FlxTypeText;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxSpriteGroup;
-import flixel.input.FlxKeyManager;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import haxe.Json;
-import lime.utils.Assets;
 
 using StringTools;
 
@@ -19,9 +16,7 @@ class HEXDialogueBox extends FlxSpriteGroup // yapi old hex diag
 {
 	var box:FlxSprite;
 
-	private var background:FlxSpriteGroup = new FlxSpriteGroup();
-	private var splitBack:String = "";
-	private var BGid:Int = -1;
+	var background:FlxSprite;
 
 	var curCharacter:String = '';
 
@@ -51,42 +46,54 @@ class HEXDialogueBox extends FlxSpriteGroup // yapi old hex diag
 	{
 		super();
 
-		trace(dialogueList);
-
 	if (PlayState.isStoryMode)
 	{
-		switch (PlayState.SONG.song.toLowerCase())
-		{
-		case 'dunk' | 'ram' | 'hello-world' | 'glitcher':
-		    sound = new FlxSound().loadEmbedded(Paths.music('givinALittle', 'hex'), true);
-		    sound.volume = 0;
-		    FlxG.sound.list.add(sound);
-		    sound.fadeIn(1, 0, 0.8);
-		}
+		sound = new FlxSound().loadEmbedded(Paths.music('givinALittle', 'hex'), true);
+		sound.volume = 0;
+		FlxG.sound.list.add(sound);
+		sound.fadeIn(1, 0, 0.8);
 	}
 
-		black = new FlxSprite(-200, -200).makeGraphic(9000, 9000, FlxColor.BLACK);
-		add(black);
+	switch (PlayState.SONG.song.toLowerCase()) // FOR BG STARTUP
+	{
+		case 'dunk':
+		    black = new FlxSprite(-158, -86).loadGraphic(Paths.image('cutscenes/CUT1', 'hex'));
+			black.scale.set(0.8, 0.8);
+		    black.antialiasing = true;
+		    black.updateHitbox();
+		    black.visible = true;
+		    add(black);
+		case 'ram':
+			black = new FlxSprite(-158, -86).loadGraphic(Paths.image('cutscenes/CUT7', 'hex'));
+			black.scale.set(0.8, 0.8);
+		    black.antialiasing = true;
+		    black.updateHitbox();
+		    black.visible = true;
+		    add(black);
+		case 'hello-world':
+			black = new FlxSprite(-158, -86).loadGraphic(Paths.image('cutscenes/CUT10', 'hex'));
+			black.scale.set(0.8, 0.8);
+		    black.antialiasing = true;
+		    black.updateHitbox();
+		    black.visible = true;
+		    add(black);
+		case 'glitcher':
+			black = new FlxSprite(-158, -86).loadGraphic(Paths.image('cutscenes/CUT13', 'hex'));
+			black.scale.set(0.8, 0.8);
+		    black.antialiasing = true;
+		    black.updateHitbox();
+		    black.visible = true;
+		    add(black);
+	}
+		
+		background = new FlxSprite(-350, -195); // BG SYSTEM
+		background.scale.set(0.8, 0.8);
+		background.antialiasing = true;
+		background.updateHitbox();
+		background.visible = false;
+		add(background);	
 
 		box = new FlxSprite(-20, 400).loadGraphic(Paths.image('dialoguebox', 'hex'));
-
-		switch (PlayState.SONG.song.toLowerCase())
-		{
-			case 'dunk' | 'ram' | 'hello-world' | 'glitcher':
-			var bgJson:Array<Dynamic> = cast Json.parse(Assets.getText(Paths.json('backgrounds')).trim()).bg;
-
-		    for (ar in bgJson)
-		    {
-			    var bg:FlxSprite = new FlxSprite();
-			    bg = new FlxSprite(ar[1], ar[2]).loadGraphic(Paths.image('cutscenes/' + ar[0]));
-			    bg.scrollFactor.set();
-			    bg.antialiasing = true;
-			    bg.scale.set(ar[3], ar [3]);
-			    bg.visible = false;
-			    background.add(bg);
-		    }
-		    add(background);
-		}
 
 		this.dialogueList = dialogueList;
 
@@ -185,20 +192,6 @@ class HEXDialogueBox extends FlxSpriteGroup // yapi old hex diag
 				startDialogue();
 			}
 		}
-			if(background.members.length > 1 && splitBack.length > 0)
-			{
-				var id = Std.parseInt(splitBack) -1;
-				if(BGid != -1)
-				{
-					background.members[BGid].visible = false;
-				}
-				if(id >= 0)
-				{
-					black.visible = false;
-					background.members[id].visible = true;
-					BGid = id;
-				}
-			}
 
 		super.update(elapsed);
 	}
@@ -254,35 +247,41 @@ class HEXDialogueBox extends FlxSpriteGroup // yapi old hex diag
 	}
 
 	function cleanDialog():Void
-	{
-		var splitName:Array<String> = dialogueList[0].split(":");
-		
-		if (splitName[1] == 'PLAYSOUND')
-		{
-			trace('SOUND NOW IZZZZZZZZ ' + splitName[2]);
-			snd = new FlxSound().loadEmbedded(Paths.sound(splitName[2], 'hex'));
-			snd.play();
-			dialogueList.remove(dialogueList[0]);
-		}
-		else if (splitName[1] == 'BGTRACK')
-		{
-			trace('BG TRACK ' + splitName[2]);
-			sound.fadeOut();
-			FlxG.sound.list.remove(sound);
-			sound = new FlxSound().loadEmbedded(Paths.music(splitName[2], 'hex'));
-			sound.volume = 0;
-			FlxG.sound.list.add(sound);
-			sound.fadeIn(1, 0, 0.8);
-			dialogueList.remove(dialogueList[0]);
-		}
-		else if(splitName[1].split("/").length > 1)
-		{
-			trace('bg now is ' + splitName[1]);
-			splitBack = splitName[1].split("/")[1];
-			curCharacter = splitName[1].split("/")[0];
-		}
-		else
-			curCharacter = splitName[1];
-		dialogueList[0] = dialogueList[0].substr(splitName[1].length + 2).trim();
-	}
+    {
+        var splitName:Array<String> = dialogueList[0].split(":");
+
+		switch(splitName[1])
+        {
+            case "PLAYSOUND":
+                trace('SOUND NOW IZZZZZZZZ ' + splitName[2]);
+                snd = new FlxSound().loadEmbedded(Paths.sound(splitName[2], 'hex'));
+                snd.play();
+                dialogueList.remove(dialogueList[0]);
+                return;
+
+            case "BGCHANGE":
+               trace('changed bg');
+                background.visible = true;
+                black.visible = false;
+                background.loadGraphic(Paths.image(splitName[2], 'hex'));
+                dialogueList.remove(dialogueList[0]);
+                return;
+
+            case "BGTRACK":
+                trace('BG TRACK ' + splitName[2]);
+                sound.fadeOut();
+                FlxG.sound.list.remove(sound);
+                sound = new FlxSound().loadEmbedded(Paths.music(splitName[2], 'hex'));
+                sound.volume = 0;
+                FlxG.sound.list.add(sound);
+                sound.fadeIn(1, 0, 0.8);
+                dialogueList.remove(dialogueList[0]);
+                return;
+
+            default:
+                curCharacter = splitName[1];
+                dialogueList[0] = dialogueList[0].substr(splitName[1].length + 2).trim();
+    }
+    }
+
 }

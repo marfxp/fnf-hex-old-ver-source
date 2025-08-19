@@ -3,9 +3,9 @@ just hex mod XD
 
 ## new diag system :o
 diag system in this mod: 
-**to change bg** (example: :hex/4: blah blah blah)
-**to play snd**: :PLAYSOUND:(sound path from "assets/hex/sounds") (example: :PLAYSOUND:bzzt)
-**to change bg track**: :BGTRACK:(track path from "assets/hex/music") (example: :BGTRACK:hectic)
+**to change bg** :BGCHANGE:(bg path from "assets/hex/images/cutscenes", example: :BGCHANGE:cutscenes/CUT15),
+**to play snd**: :PLAYSOUND:(sound path from "assets/hex/sounds") (example: :PLAYSOUND:bzzt),
+**to change bg track**: :BGTRACK:(track path from "assets/hex/music") (example: :BGTRACK:hectic),
 
 ## must read!!!!!!!!!!!!!!!!!!!!!!
 be bo bap
@@ -13,18 +13,23 @@ be bo bap
 ## if u want compile, read this parts
 
 ## libraries versions!!!!!!!!!!
+```
 lime: 7.8.0
 openfl: 9.0.2
 flixel: 4.8.1
+```
 
 **flixel family libs (flixel-addons, flixel-ui)**
+```
 addons: 2.9.0
 demos: 2.7.3
 templates: 2.6.5
 tools: 1.4.4
 ui: 2.3.3
+```
 
 **other**
+```
 discord_rpc: https://github.com/Aidan63/linc_discord-rpc.git
 faxe: https://github.com/ashea-code/faxe.git
 haxe-gif: 0.3.3
@@ -40,6 +45,7 @@ openfl-ffmpeg: 0.0.1
 openfl-webm: 0.0.4
 tjson: 1.4.0
 yagp: 1.1.4
+```
 
 ## to compile
 
